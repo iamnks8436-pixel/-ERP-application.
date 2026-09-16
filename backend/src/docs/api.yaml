@@ -1,0 +1,172 @@
+paths:
+  /auth/login:
+    post:
+      tags: [Authentication]
+      summary: Login and receive JWT token
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, format: email }
+                password: { type: string }
+      responses:
+        '200':
+          description: Login successful
+        '401':
+          description: Invalid credentials
+
+  /customers:
+    post:
+      tags: [Customers]
+      summary: Create a new customer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [companyName, contactPerson, mobile, email, city]
+              properties:
+                companyName: { type: string }
+                contactPerson: { type: string }
+                mobile: { type: string }
+                email: { type: string }
+                city: { type: string }
+      responses:
+        '201':
+          description: Customer created
+    get:
+      tags: [Customers]
+      summary: List all customers
+      responses:
+        '200':
+          description: List of customers
+
+  /enquiries:
+    post:
+      tags: [Enquiries]
+      summary: Create customer enquiry
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [requiredDate, items]
+              properties:
+                customerId: { type: string, format: uuid }
+                customer:
+                  type: object
+                requiredDate: { type: string, format: date-time }
+                notes: { type: string }
+                items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      productId: { type: string }
+                      quantity: { type: integer }
+      responses:
+        '201':
+          description: Enquiry created
+    get:
+      tags: [Enquiries]
+      summary: List all enquiries
+      responses:
+        '200':
+          description: List of enquiries
+
+  /quotations:
+    post:
+      tags: [Quotations]
+      summary: Create quotation against enquiry
+      responses:
+        '201':
+          description: Quotation created
+    get:
+      tags: [Quotations]
+      summary: List all quotations
+      responses:
+        '200':
+          description: List of quotations
+
+  /quotations/{id}/status:
+    patch:
+      tags: [Quotations]
+      summary: Update quotation status (SENT, ACCEPTED, REJECTED)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Status updated
+
+  /quotations/{id}/convert:
+    post:
+      tags: [Quotations]
+      summary: Convert accepted quotation to sales order
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '201':
+          description: Sales order created
+
+  /sales-orders:
+    get:
+      tags: [Sales Orders]
+      summary: List all sales orders
+      responses:
+        '200':
+          description: List of sales orders
+
+  /sales-orders/inventory:
+    get:
+      tags: [Inventory]
+      summary: View inventory with available quantities
+      responses:
+        '200':
+          description: Inventory list
+
+  /sales-orders/{id}/confirm:
+    post:
+      tags: [Sales Orders]
+      summary: Confirm sales order and reserve inventory (ADMIN only)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Order confirmed
+
+  /sales-orders/{id}/dispatch:
+    post:
+      tags: [Sales Orders]
+      summary: Dispatch confirmed order (ADMIN only)
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '201':
+          description: Dispatch created
+
+  /products:
+    get:
+      tags: [Products]
+      summary: List products with inventory availability
+      responses:
+        '200':
+          description: Product list

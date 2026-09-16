@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-slate-800 antialiased bg-slate-50;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+}
+
+@layer components {
+  .input-field {
+    @apply w-full border border-slate-200 rounded-lg px-3 py-2.5 text-sm
+      bg-white placeholder:text-slate-400
+      focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500
+      transition-colors;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium
+      bg-brand-600 text-white hover:bg-brand-700 disabled:opacity-50 disabled:cursor-not-allowed
+      transition-colors;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium
+      bg-white text-slate-700 border border-slate-200 hover:bg-slate-50
+      disabled:opacity-50 disabled:cursor-not-allowed transition-colors;
+  }
+
+  .btn-success {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium
+      bg-emerald-600 text-white hover:bg-emerald-700 transition-colors;
+  }
+
+  .btn-danger {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium
+      bg-red-600 text-white hover:bg-red-700 transition-colors;
+  }
+
+  .btn-warning {
+    @apply inline-flex items-center justify-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium
+      bg-amber-600 text-white hover:bg-amber-700 transition-colors;
+  }
+
+  .panel {
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-sm;
+  }
+
+  .page-title {
+    @apply text-2xl font-bold tracking-tight text-slate-900;
+  }
+
+  .page-subtitle {
+    @apply mt-1 text-sm text-slate-500;
+  }
+
+  .table-shell {
+    @apply overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm;
+  }
+
+  .table-shell th {
+    @apply bg-slate-50/80 px-5 py-3 text-left text-[11px] font-bold uppercase tracking-wider text-slate-500;
+  }
+
+  .table-shell td {
+    @apply border-t border-slate-100 px-5 py-4 text-sm text-slate-600;
+  }
+}
