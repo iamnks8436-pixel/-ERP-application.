@@ -15,9 +15,9 @@ export default {
           900: '#1e3a8a',
         },
         sidebar: {
-          DEFAULT: '#0f172a',
-          hover: '#1e293b',
-          active: '#2563eb',
+          DEFAULT: '#0B1120',
+          hover: '#1E293B',
+          active: '#3B82F6',
         },
       },
       boxShadow: {

@@ -2,9 +2,9 @@ export default function Alert({ type = 'error', message, onClose }) {
   if (!message) return null;
 
   const styles = {
-    error: 'bg-red-50 text-red-800 border-red-200',
-    success: 'bg-green-50 text-green-800 border-green-200',
-    info: 'bg-blue-50 text-blue-800 border-blue-200',
+    error: 'bg-red-500/10 text-red-300 border-red-500/30',
+    success: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30',
+    info: 'bg-blue-500/10 text-blue-300 border-blue-500/30',
   };
 
   return (
