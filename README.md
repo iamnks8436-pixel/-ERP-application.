@@ -116,6 +116,15 @@ npm run dev
 
 Frontend runs at **http://localhost:5173**
 
+## Deployed Application
+
+The production ERP application is available at:
+
+- Frontend: **https://mini-erp-crm-eqcw.vercel.app**
+- Backend API: **https://erp-application-production.up.railway.app**
+- Health check: **https://erp-application-production.up.railway.app/health**
+- Swagger docs: **https://erp-application-production.up.railway.app/api/docs**
+
 ## Environment Variables
 
 ### Backend (`backend/.env`)
@@ -133,6 +142,12 @@ Frontend runs at **http://localhost:5173**
 | Variable | Description | Example |
 |----------|-------------|---------|
 | `VITE_API_URL` | Backend API base URL | `http://localhost:5000/api` |
+
+For the production frontend build, use `frontend/.env.production`:
+
+```env
+VITE_API_URL=https://erp-application-production.up.railway.app/api
+```
 
 ## Login Credentials (Seed Data)
 
@@ -171,7 +186,10 @@ Frontend runs at **http://localhost:5173**
 | POST | `/api/sales-orders/:id/dispatch` | **ADMIN only** | Dispatch order |
 | GET | `/api/products` | SALES, ADMIN | Products with availability |
 
-Full Swagger documentation: **http://localhost:5000/api/docs**
+Full Swagger documentation:
+
+- Development: **http://localhost:5000/api/docs**
+- Production: **https://erp-application-production.up.railway.app/api/docs**
 
 ## Business Rules
 
