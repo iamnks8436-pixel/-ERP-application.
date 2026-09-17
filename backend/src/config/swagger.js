@@ -8,7 +8,16 @@ const options = {
       version: '1.0.0',
       description: 'REST API for Manufacturing & Supply Company ERP System',
     },
-    servers: [{ url: 'http://localhost:5000/api', description: 'Development server' }],
+    servers: [
+      {
+        url: 'https://erp-application-production.up.railway.app/api',
+        description: 'Production server',
+      },
+      {
+        url: 'http://localhost:5000/api',
+        description: 'Development server',
+      },
+    ],
     components: {
       securitySchemes: {
         bearerAuth: {
